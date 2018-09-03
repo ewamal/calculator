@@ -1,3 +1,4 @@
+require "pry"
 class Calculator
   def initialize(numbers)
     @numbers = numbers
@@ -17,9 +18,21 @@ class Calculator
 
   def mode
     hash = {}
+
     numbers.each do |number|
+      if !hash[number]
+      hash[number] = 0
+      end
       hash[number] += 1
     end
-  end
 
+    result = nil
+
+    hash.each do |key, value|
+      if result == nil || value > hash[result]
+        result = key
+      end
+    end
+    result
+  end
 end
