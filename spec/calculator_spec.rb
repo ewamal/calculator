@@ -29,6 +29,23 @@ describe Calculator do
       numbers = [2,3,4,5,5]
       subject = Calculator.new(numbers)
       expect(subject.mode).to eq(5)
+
+      numbers = [2,3,4,5]
+      subject = Calculator.new(numbers)
+      expect(subject.mode).to eq(nil)
     end
   end
+
+  describe "#median" do
+    it "returns the median" do
+      numbers = [1,3,3,6,7,8,9]
+      subject = Calculator.new(numbers)
+      expect(subject.median).to eq(6)
+
+      # numbers = [1,2,3,4,5,6,8,9]
+      # subject = Calculator.new(numbers)
+      # expect(subject.median).to eq(4.5)
+    end
+  end
+
 end

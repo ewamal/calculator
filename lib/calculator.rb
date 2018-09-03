@@ -33,6 +33,17 @@ class Calculator
         result = key
       end
     end
+    if hash[result] == 1
+      return nil
+    end
     result
   end
+
+  def median
+    if numbers.count % 2 == 0
+      numbers[numbers.count/2]
+    end
+    (numbers[(numbers.count/2).floor] + numbers[(numbers.count/2).ceil]) / 2
+  end
+  
 end
