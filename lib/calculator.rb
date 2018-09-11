@@ -9,25 +9,19 @@ class Calculator
   end
 
   def average(arr = numbers)
-    if arr.count == 0
-      return nil
-    end
-    sum = 0
-    arr.each do |number|
-      sum += number
-    end
-    (sum / arr.count).round
+    count = arr.count
+    return nil if count == 0
+    (arr.sum.to_f / count).round(2)
   end
 
   def mode
-    hash = {}
 
-    numbers.each do |number|
-      if !hash[number]
-      hash[number] = 0
-      end
-      hash[number] += 1
+    hash = numbers.reduce({}) do |hash, num|
+      hash[num] = 0 if !hash[num]
+      hash[num] += 1
+      hash
     end
+
 
     result = nil
 
@@ -38,20 +32,17 @@ class Calculator
     end
 
     mode_count = hash[result]
-    if hash.values.count(mode_count) > 1
-      return nil
-    end
+    return nil if hash.values.count(mode_count) > 1
 
     return result
   end
 
   def median
+    middle = numbers.count/2
     if numbers.count % 2 != 0
-      numbers[numbers.count/2]
+      numbers[middle]
     else
-      (numbers[numbers.count/2] + numbers[numbers.count/2 - 1]) / 2.0
+      average([numbers[middle],numbers[middle - 1]])
     end
-
   end
-
 end

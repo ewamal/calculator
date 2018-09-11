@@ -24,7 +24,7 @@ describe Calculator do
     it "returns average of the numbers" do
       numbers = [0,23, 15.5]
       subject = Calculator.new(numbers)
-      expect(subject.average).to eq(13)
+      expect(subject.average).to eq(12.83)
     end
 
     it "returns nil for an empty array" do
