@@ -9,6 +9,9 @@ class Calculator
   end
 
   def average(arr = numbers)
+    if arr.count == 0
+      return nil
+    end
     sum = 0
     arr.each do |number|
       sum += number

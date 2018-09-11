@@ -26,7 +26,24 @@ describe Calculator do
       subject = Calculator.new(numbers)
       expect(subject.average).to eq(13)
     end
+
+    it "returns nil for an empty array" do
+      numbers = []
+      subject = Calculator.new(numbers)
+      expect(subject.average).to eq(nil)
+    end
+
+    context "#average() with an argument" do
+      it "returns average of some numbers" do
+        subject = Calculator.new([1,2])
+        arg = [2,4]
+        expect(subject.average(arg)).to eq(3)
+      end
+    end
+
   end
+
+
 
   describe "#mode" do
     it 'returns the mode if there\'s a most frequent number ' do
