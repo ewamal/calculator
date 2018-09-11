@@ -13,11 +13,15 @@ describe Calculator do
       numbers = [1,2,3]
       subject = Calculator.new(numbers)
       expect(subject.average).to eq(2)
+    end
 
+    it "returns average of the numbers" do
       numbers = [0,10]
       subject = Calculator.new(numbers)
       expect(subject.average).to eq(5)
+    end
 
+    it "returns average of the numbers" do
       numbers = [0,23, 15.5]
       subject = Calculator.new(numbers)
       expect(subject.average).to eq(13)

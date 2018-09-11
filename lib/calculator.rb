@@ -8,12 +8,12 @@ class Calculator
     @numbers
   end
 
-  def average
+  def average(arr = numbers)
     sum = 0
-    numbers.each do |number|
+    arr.each do |number|
       sum += number
     end
-    (sum / numbers.count).round
+    (sum / arr.count).round
   end
 
   def mode
