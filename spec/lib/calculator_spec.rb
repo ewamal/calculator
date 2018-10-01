@@ -1,4 +1,4 @@
-require_relative "../lib/calculator"
+require_relative "../../lib/calculator"
 
 describe Calculator do
   describe ".initialize" do
