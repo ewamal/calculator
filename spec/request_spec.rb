@@ -24,4 +24,9 @@ describe "calculator app" do
     expect(last_response.status).to eq(200)
     expect(JSON.parse(last_response.body)).to eq("median" => 2)
   end
+
+  it "returns 404 for unidentified path" do
+    get("/hello-world")
+    expect(last_response.status).to eq(404)
+  end
 end
