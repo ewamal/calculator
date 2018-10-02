@@ -3,9 +3,9 @@ require_relative "../../lib/user"
 describe User do
   describe ".initialize" do
     it "initializes with specified arguments" do
-      email = 'ewa@ewa.pl'
+      email = "ewa@ewa.pl"
       age = 22
-      name = 'Ewa'
+      name = "Ewa"
       subject = User.new(email, age, name)
       expect(subject.email).to eq(email)
       expect(subject.age).to eq(age)
@@ -15,9 +15,9 @@ describe User do
 
   describe "email" do
     it "reassign value" do
-      email = 'ewa@ewa.pl'
+      email = "ewa@ewa.pl"
       age = 22
-      name = 'Ewa'
+      name = "Ewa"
       subject = User.new(email, age, name)
       subject.email = "josie@ewa.pl"
       expect(subject.email).to eq("josie@ewa.pl")

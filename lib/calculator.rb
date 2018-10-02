@@ -1,48 +1,43 @@
 require "pry"
+
+# class is calculating an array
 class Calculator
   def initialize(numbers)
     @numbers = numbers
   end
 
-  def numbers
-    @numbers
-  end
+  attr_reader :numbers
 
   def average(arr = numbers)
     count = arr.count
-    return nil if count == 0
+    return nil if count.zero?
+
     (arr.sum.to_f / count).round(2)
   end
 
+  # TODO: refactor this method
   def mode
-
-    hash = numbers.reduce({}) do |hash, num|
-      hash[num] = 0 if !hash[num]
-      hash[num] += 1
-      hash
+    hash = numbers.each_with_object({}) do |num, h|
+      h[num] = 0 unless h[num]
+      h[num] += 1
     end
 
-
     result = nil
-
     hash.each do |key, value|
-      if result == nil || value > hash[result]
-        result = key
-      end
+      result = key if result.nil? || value > hash[result]
     end
 
     mode_count = hash[result]
     return nil if hash.values.count(mode_count) > 1
-
-    return result
+    result
   end
 
   def median
-    middle = numbers.count/2
-    if numbers.count % 2 != 0
+    middle = numbers.count / 2
+    if numbers.odd?
       numbers[middle]
     else
-      average([numbers[middle],numbers[middle - 1]])
+      average([numbers[middle], numbers[middle - 1]])
     end
   end
 end
