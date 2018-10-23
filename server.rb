@@ -4,7 +4,9 @@ require "JSON"
 require_relative "./lib/calculator"
 
 before do
-  @req_data = JSON.parse(request.body.read.to_s) if request.body.read.to_s != ""
+  binding.pry
+  body = request.body.read.to_s
+  @req_data = JSON.parse(body) if body != ""
 end
 
 post "/average" do
@@ -26,6 +28,8 @@ post "/mode" do
   calculator = Calculator.new(@req_data["array"])
   { mode: calculator.mode }.to_json
 end
+
+
 
 # curl -H "Content-Type: application/json" -X POST --data "{ "array":[1, 2, 3]
 # }" http://localhost:4567/average
