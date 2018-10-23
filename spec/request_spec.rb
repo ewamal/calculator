@@ -1,12 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + "/spec_helper")
 
 describe "calculator app" do
-  # include Rack::Test::Methods
-  #
-  # def app
-  #   Sinatra::Application
-  # end
-
   it "responds with average" do
     post("/average", { "array" => [1, 2, 3] }.to_json)
     expect(last_response.status).to eq(200)

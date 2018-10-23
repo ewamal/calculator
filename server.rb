@@ -4,9 +4,7 @@ require "JSON"
 require_relative "./lib/calculator"
 
 before do
-  if request.body.read.to_s != ""
-    @req_data = JSON.parse(request.body.read.to_s)
-  end
+  @req_data = JSON.parse(request.body.read.to_s) if request.body.read.to_s != ""
 end
 
 post "/average" do
