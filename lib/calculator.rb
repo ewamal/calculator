@@ -2,22 +2,28 @@ require "pry"
 
 # class is calculating an array
 class Calculator
-  def initialize(numbers)
-    @numbers = numbers
+
+  def evaluate(type:, array:)
+    case type
+    when "average"
+      average(array)
+    when "mode"
+      mode(array)
+    when "median"
+      median(array)
+    end
   end
 
-  attr_reader :numbers
-
-  def average(arr = numbers)
-    count = arr.count
+  def average(array)
+    count = array.count
     return nil if count.zero?
 
-    (arr.sum.to_f / count).round(2)
+    (array.sum.to_f / count).round(2)
   end
 
   # TODO: refactor this method
-  def mode
-    hash = numbers.each_with_object({}) do |num, h|
+  def mode(array)
+    hash = array.each_with_object({}) do |num, h|
       h[num] ? h[num] += 1 : h[num] = 1
     end
 
@@ -32,12 +38,12 @@ class Calculator
     result
   end
 
-  def median
-    middle = numbers.count / 2
-    if numbers.count.odd?
-      numbers[middle]
+  def median(array)
+    middle = array.count / 2
+    if array.count.odd?
+      array[middle]
     else
-      average([numbers[middle], numbers[middle - 1]])
+      average([array[middle], array[middle - 1]])
     end
   end
 end

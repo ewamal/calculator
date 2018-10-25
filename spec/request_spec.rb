@@ -24,9 +24,9 @@ describe "calculator app" do
     expect(last_response.status).to eq(404)
   end
 
-  it "responds with 400 for invalid data" do
-    post("/average", { "foo" => [1, 2, 3] }.to_json)
-    expect(last_response.status).to eq(400)
-    expect(JSON.parse(last_response.body)).to eq("error_message" => "'array' key required")
-  end
+  # it "responds with 400 for invalid data" do
+  #   post("/average", { "foo" => [1, 2, 3] }.to_json)
+  #   expect(last_response.status).to eq(400)
+  #   expect(JSON.parse(last_response.body)).to eq("error_message" => "'array' key required")
+  # end
 end

@@ -4,7 +4,6 @@ require "JSON"
 require_relative "./lib/calculator"
 
 before do
-  binding.pry
   body = request.body.read.to_s
   @req_data = JSON.parse(body) if body != ""
 end
