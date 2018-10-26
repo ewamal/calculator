@@ -101,5 +101,24 @@ describe Calculator do
       expect(subject.evaluate(data)).to eq(2)
     end
 
+    context "error handling" do
+      it "raises an error for missing keys" do
+        subject = Calculator.new
+        data = { "type" => "median"}
+        expect {subject.evaluate(data)}
+        .to raise_error(
+          Calculator::MissingKeyError, "'array' key required"
+        )
+      end
+
+      it "raises an error for missing keys" do
+        subject = Calculator.new
+        data = { "type" => "median", "array" => ["ewa",1,2]}
+        expect {subject.evaluate(data)}
+        .to raise_error(
+          Calculator::MalformedDataError, "malformed data"
+        )
+      end
+    end
   end
 end

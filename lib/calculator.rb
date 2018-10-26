@@ -2,11 +2,15 @@ require "pry"
 
 # class is calculating an array
 class Calculator
+  class MissingKeyError < StandardError; end
+  class MalformedDataError < StandardError; end
 
   def evaluate(data)
     type = data["type"]
     array = data["array"]
 
+    raise MissingKeyError.new("'array' key required") if array.nil?
+    raise MalformedDataError.new("malformed data") unless valid_numbers?(array)
     case type
     when "average"
       average(array)
@@ -14,6 +18,12 @@ class Calculator
       mode(array)
     when "median"
       median(array)
+    end
+  end
+
+  def valid_numbers? (numbers)
+    numbers.all? do |number|
+      number.is_a? Integer
     end
   end
 
