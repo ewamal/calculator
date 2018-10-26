@@ -83,9 +83,20 @@ describe Calculator do
 #   end
 #
   describe "#evaluate" do
-    it "evaluates method" do
+    it "evaluates average" do
       subject = Calculator.new()
       expect(subject.evaluate(type: "average", array: [1,2,3])).to eq(2)
     end
+
+    it "evaluates mode" do
+      subject = Calculator.new()
+      expect(subject.evaluate(type: "mode", array: [1,2,3,3])).to eq(3)
+    end
+
+    it "evaluates median" do
+      subject = Calculator.new()
+      expect(subject.evaluate(type: "median", array: [1,2,3])).to eq(2)
+    end
+
   end
 end

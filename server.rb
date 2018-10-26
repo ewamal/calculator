@@ -8,6 +8,12 @@ before do
   @req_data = JSON.parse(body) if body != ""
 end
 
+post "/evaluate" do
+  content_type(:json)
+  calculator = Calculator.new
+  { result: calculator.evaluate(@req_data) }.to_json
+end
+
 post "/average" do
   content_type(:json)
   calculator = Calculator.new(@req_data["array"])
