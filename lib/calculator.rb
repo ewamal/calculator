@@ -3,7 +3,10 @@ require "pry"
 # class is calculating an array
 class Calculator
 
-  def evaluate(type:, array:)
+  def evaluate(data)
+    type = data["type"]
+    array = data["array"]
+
     case type
     when "average"
       average(array)
