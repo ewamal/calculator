@@ -1,6 +1,6 @@
 require "bundler"
 Bundler.require
-require "JSON"
+require "json"
 require_relative "./lib/calculator"
 
 before do
