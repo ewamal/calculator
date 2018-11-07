@@ -12,7 +12,7 @@ post "/evaluate" do
   content_type(:json)
   calculator = Calculator.new
   { @req_data['type'] => calculator.evaluate(@req_data) }.to_json
-rescue Calculator::MissingKeyError, Calculator::MalformedDataError => error
+rescue Calculator::MissingDataError, Calculator::MalformedDataError => error
   halt 400, { "error_message" => error.message }.to_json
 end
 

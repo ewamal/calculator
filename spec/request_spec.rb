@@ -27,7 +27,7 @@ describe "calculator app" do
   it "responds with 400 for invalid data" do
     post("/evaluate", { :type => 'average'}.to_json)
     expect(last_response.status).to eq(400)
-    expect(JSON.parse(last_response.body)).to eq("error_message" => "'array' key required")
+    expect(JSON.parse(last_response.body)).to eq("error_message" => "array data missing")
   end
 
   it "responds with 400 for invalid data" do

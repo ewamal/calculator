@@ -2,14 +2,15 @@ require "pry"
 
 # class is calculating an array
 class Calculator
-  class MissingKeyError < StandardError; end
+  class MissingDataError < StandardError; end
   class MalformedDataError < StandardError; end
 
   def evaluate(data)
     type = data["type"]
     array = data["array"]
 
-    raise MissingKeyError.new("'array' key required") if array.nil?
+    raise MissingDataError.new("array data missing") if !array || array.empty?
+    raise MissingDataError.new("type data missing") if !type || type.empty?
     raise MalformedDataError.new("malformed data") unless valid_numbers?(array)
     case type
     when "average"
@@ -23,7 +24,7 @@ class Calculator
 
   def valid_numbers? (numbers)
     numbers.all? do |number|
-      number.is_a? Integer
+      number.is_a? Numeric
     end
   end
 

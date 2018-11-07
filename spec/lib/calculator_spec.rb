@@ -22,12 +22,6 @@ describe Calculator do
       expect(subject.evaluate(data)).to eq(12.83)
     end
 
-    it "returns nil for an empty array" do
-      subject = Calculator.new
-      data = {"type" => "average", "array" => []}
-      expect(subject.evaluate(data)).to eq(nil)
-    end
-
   end
 
   describe "#mode" do
@@ -96,7 +90,7 @@ describe Calculator do
         data = { "type" => "median"}
         expect {subject.evaluate(data)}
         .to raise_error(
-          Calculator::MissingKeyError, "'array' key required"
+          Calculator::MissingDataError, "array data missing"
         )
       end
 
@@ -108,6 +102,15 @@ describe Calculator do
           Calculator::MalformedDataError, "malformed data"
         )
       end
+
+      it "raises an error for an empty array" do
+        subject = Calculator.new
+        data = {"type" => "average", "array" => []}
+        expect {subject.evaluate(data)}.to raise_error(
+          Calculator::MissingDataError, "array data missing" )
+      end
+
+      # TODO: test type error
     end
   end
 end
