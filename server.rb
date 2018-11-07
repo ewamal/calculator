@@ -17,5 +17,4 @@ rescue Calculator::MissingKeyError, Calculator::MalformedDataError => error
 end
 
 
-# curl -H "Content-Type: application/json" -X POST --data "{ "array":[1, 2, 3]
-# }" http://localhost:4567/average
+# curl -H "Content-Type: application/json" -X POST --data '{ "type": "average", "array": [1, 2, 3] }' http://localhost:4567/evaluate
