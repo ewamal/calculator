@@ -29,9 +29,12 @@ class Calculator
   end
 
   def valid_numbers? (numbers)
+    return false unless numbers.is_a? Array
+      
     numbers.all? do |number|
       number.is_a? Numeric
     end
+
   end
 
   def average(array)
