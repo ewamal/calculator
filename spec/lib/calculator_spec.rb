@@ -110,7 +110,20 @@ describe Calculator do
           Calculator::MissingDataError, "array data missing" )
       end
 
-      # TODO: test type error
+      it "raises an error for no type" do
+        subject = Calculator.new
+        data = {"type" => "", "array" => [3,6,4,3]}
+        expect {subject.evaluate(data)}.to raise_error(
+          Calculator::MissingDataError, "type data missing" )
+      end
+
+      it "raises an error for unrecognized type " do
+        subject = Calculator.new
+        data = {"type" => "sfdfsd", "array" => [3,6,4,3]}
+        expect {subject.evaluate(data)}.to raise_error(
+          Calculator::MalformedDataError, "malformed data" )
+      end
+      
     end
   end
 end

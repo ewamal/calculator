@@ -8,6 +8,10 @@ before do
   @req_data = JSON.parse(body) if body != ""
 end
 
+get "/" do
+  erb :home
+end
+
 post "/evaluate" do
   content_type(:json)
   calculator = Calculator.new

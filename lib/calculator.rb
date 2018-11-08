@@ -12,6 +12,8 @@ class Calculator
     raise MissingDataError.new("array data missing") if !array || array.empty?
     raise MissingDataError.new("type data missing") if !type || type.empty?
     raise MalformedDataError.new("malformed data") unless valid_numbers?(array)
+    raise MalformedDataError.new("malformed data") unless valid_type?(type)
+
     case type
     when "average"
       average(array)
@@ -20,6 +22,10 @@ class Calculator
     when "median"
       median(array)
     end
+  end
+
+  def valid_type? (type)
+    ["average","mode","median"].include? (type)
   end
 
   def valid_numbers? (numbers)
