@@ -25,6 +25,7 @@ class Calculator
     when "add"
       add(array)
     end
+
   end
 
   def valid_type?(type)
