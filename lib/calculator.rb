@@ -29,7 +29,7 @@ class Calculator
   end
 
   def valid_type?(type)
-    #WTF
+
     %w[average mode median add].include? type
   end
 

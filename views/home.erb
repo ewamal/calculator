@@ -1,12 +1,13 @@
+<link rel="stylesheet" type="text/css" href="/style.css">
+
 <h1>Calculator</h1>
-<form action="/evaluate" method="post" class="calculator-form">
+<form action="/calcuate" method="post" class="calculator-form">
   <input type="text" name="array" class="calculator-form__array" placeholder="Add an array...">
   <select name="type">
     <option value="average">average</option>
     <option value="mode">mode</option>
     <option value="median">median</option>
     <option value="add">add</option>
-
   </select>
 
   <!--
@@ -17,3 +18,13 @@
   <input type="submit" class="calculator-form__submit" value="Submit">
 
 </form>
+
+<h1>
+  <%= @type%>
+  <%= @result ? ":" : "" %>
+  <%= @result%>
+</h1>
+
+<h1>
+  <%= @error %>
+</h1>

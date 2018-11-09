@@ -3,26 +3,44 @@ Bundler.require
 require "json"
 require_relative "./lib/calculator"
 
-def parse_data
-  @req_data = if params
-                parsed_array = JSON.parse(params["array"])
-                { "type" => params["type"], "array" => parsed_array }
-              else
-                body = request.body.read.to_s
-                JSON.parse(body) if body != ""
-              end
+def parse_curl_data
+  body = request.body.read.to_s
+  @req_data = JSON.parse(body) if body != ""
+end
+
+def parse_form_data
+  parsed_array = JSON.parse(params["array"])
+  @req_data = { "type" => params["type"], "array" => parsed_array }
 end
 
 get "/" do
+  @type = params["type"]
+  @result = params["result"]
+  @error = params["error"]
   erb :home
+end
+
+post "/calcuate" do
+  content_type(:json)
+
+  parse_form_data
+  calculator = Calculator.new
+  result = calculator.evaluate(@req_data)
+  redirect "/?type=#{@req_data['type']}&result=#{result}"
+
+rescue Calculator::MissingDataError, Calculator::MalformedDataError => error
+
+  redirect "/?error=#{error.message}"
+
 end
 
 post "/evaluate" do
   content_type(:json)
 
-  parse_data
+  parse_curl_data
   calculator = Calculator.new
   { @req_data["type"] => calculator.evaluate(@req_data) }.to_json
+
 rescue Calculator::MissingDataError, Calculator::MalformedDataError => error
   halt 400, { "error_message" => error.message }.to_json
 end
