@@ -1,0 +1,9 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: calculator_dev
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: calculator_test
