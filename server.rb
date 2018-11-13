@@ -20,7 +20,7 @@ get "/" do
   erb :home
 end
 
-post "/calcuate" do
+post "/calculate" do
   content_type(:json)
 
   parse_form_data

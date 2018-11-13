@@ -1,7 +1,12 @@
-<link rel="stylesheet" type="text/css" href="/style.css">
+<!DOCTYPE html>
+<html>
+<head>
+<link rel=”stylesheet” type=”text/css” href=”/style.css” />
+</head>
 
-<h1>Calculator</h1>
-<form action="/calcuate" method="post" class="calculator-form">
+<body style="background-color: #d2baba; text-align: center">
+<h1 style="color:#655d5d;">Calculator</h1>
+<form action="/calculate" method="post" class="calculator-form">
   <input type="text" name="array" class="calculator-form__array" placeholder="Add an array...">
   <select name="type">
     <option value="average">average</option>
@@ -25,6 +30,7 @@
   <%= @result%>
 </h1>
 
-<h1>
+<h3 style="color:red">
   <%= @error %>
-</h1>
+</h3>
+</body>

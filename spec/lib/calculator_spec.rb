@@ -3,12 +3,6 @@ require_relative "../../lib/calculator"
 describe Calculator do
   describe "#average" do
 
-    it "returns sum of the numbers" do
-      subject = Calculator.new
-      data = { "type" => "add", "array" => [1, 2, 3] }
-      expect(subject.evaluate(data)).to eq(6)
-    end
-
     it "returns average of the numbers" do
       subject = Calculator.new
       data = { "type" => "average", "array" => [1, 2, 3] }
@@ -86,9 +80,20 @@ describe Calculator do
       data = { "type" => "median", "array" => [1, 2, 3] }
       expect(subject.evaluate(data)).to eq(2)
     end
+  end
 
-    context "error handling" do
-      it "raises an error for missing keys" do
+  describe "#sum" do
+     it "returns sum of the numbers" do
+       subject = Calculator.new
+       data = { "type" => "add", "array" => [1, 2, 3] }
+       expect(subject.evaluate(data)).to eq(6)
+     end
+  end
+
+  context "error handling" do
+
+    describe "array errors" do
+      it "raises an error for missing array key" do
         subject = Calculator.new
         data = { "type" => "median" }
         expect { subject.evaluate(data) }
@@ -97,13 +102,12 @@ describe Calculator do
           )
       end
 
-      it "raises an error for missing keys" do
+      it "raises an error for numbers passed not as an array" do
         subject = Calculator.new
-        data = { "type" => "median", "array" => ["ewa", 1, 2] }
-        expect { subject.evaluate(data) }
-          .to raise_error(
-            Calculator::MalformedDataError, "malformed data"
-          )
+        data = { "type" => "average", "array" => 3 }
+        expect { subject.evaluate(data) }.to raise_error(
+          Calculator::MalformedDataError, "pass numbers in array"
+        )
       end
 
       it "raises an error for an empty array" do
@@ -114,10 +118,31 @@ describe Calculator do
         )
       end
 
+      it "raises an error for data different than numbers passed" do
+        subject = Calculator.new
+        data = { "type" => "median", "array" => ["ewa", 1, 2] }
+        expect { subject.evaluate(data) }
+          .to raise_error(
+            Calculator::MalformedDataError, "malformed data"
+          )
+      end
+
+      it "raises an error for no numbers passed" do
+        subject = Calculator.new
+        data = { "type" => "mode", "array" => "" }
+        expect { subject.evaluate(data) }
+          .to raise_error(
+            Calculator::MissingDataError, "no numbers passed"
+          )
+      end
+    end
+
+    describe "type errors" do
       it "raises an error for no type" do
         subject = Calculator.new
-        data = { "type" => "", "array" => [3, 6, 4, 3] }
-        expect { subject.evaluate(data) }.to raise_error(
+        data = { "array" => [3, 6, 4, 3] }
+        expect { subject.evaluate(data) }
+        .to raise_error(
           Calculator::MissingDataError, "type data missing"
         )
       end
@@ -126,7 +151,7 @@ describe Calculator do
         subject = Calculator.new
         data = { "type" => "sfdfsd", "array" => [3, 6, 4, 3] }
         expect { subject.evaluate(data) }.to raise_error(
-          Calculator::MalformedDataError, "malformed data"
+          Calculator::MalformedDataError, "pass valid type"
         )
       end
     end
