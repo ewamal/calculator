@@ -49,6 +49,7 @@ describe Calculator do
   end
 
   describe "#median" do
+
     it "returns the median of odd count" do
       subject = Calculator.new
       data = { "type" => "median", "array" => [1, 3, 3, 6, 7, 8, 9] }
@@ -60,9 +61,11 @@ describe Calculator do
       data = { "type" => "median", "array" => [1, 2, 3, 4, 5, 6, 8, 9] }
       expect(subject.evaluate(data)).to eq(4.5)
     end
+     
   end
 
   describe "#evaluate" do
+
     it "evaluates average" do
       subject = Calculator.new
       data = { "type" => "average", "array" => [1, 2, 3] }
@@ -80,14 +83,17 @@ describe Calculator do
       data = { "type" => "median", "array" => [1, 2, 3] }
       expect(subject.evaluate(data)).to eq(2)
     end
+
   end
 
   describe "#sum" do
+
      it "returns sum of the numbers" do
        subject = Calculator.new
        data = { "type" => "add", "array" => [1, 2, 3] }
        expect(subject.evaluate(data)).to eq(6)
      end
+
   end
 
   context "error handling" do
@@ -135,9 +141,11 @@ describe Calculator do
             Calculator::MissingDataError, "no numbers passed"
           )
       end
+
     end
 
     describe "type errors" do
+
       it "raises an error for no type" do
         subject = Calculator.new
         data = { "array" => [3, 6, 4, 3] }
@@ -154,6 +162,7 @@ describe Calculator do
           Calculator::MalformedDataError, "pass valid type"
         )
       end
+
     end
   end
 end

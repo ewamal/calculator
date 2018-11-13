@@ -11,6 +11,8 @@ end
 def parse_form_data
   parsed_array = JSON.parse(params["array"])
   @req_data = { "type" => params["type"], "array" => parsed_array }
+rescue JSON::ParserError
+  @req_data = { "type" => params["type"], "array" => "" }
 end
 
 get "/" do
@@ -22,7 +24,6 @@ end
 
 post "/calculate" do
   content_type(:json)
-
   parse_form_data
   calculator = Calculator.new
   result = calculator.evaluate(@req_data)
