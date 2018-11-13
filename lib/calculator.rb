@@ -10,10 +10,15 @@ class Calculator
     type = data["type"]
     array = data["array"]
 
-    raise MissingDataError, "array data missing" if !array || array.empty?
-    raise MissingDataError, "type data missing" if !type || type.empty?
+    raise MissingDataError, "nothing passed" if array == ""
+    raise MissingDataError, "type data missing" if !type
+    raise MissingDataError, "array data missing" if !array
+    raise MalformedDataError, "pass numbers in array" unless array_format?(array)
     raise MalformedDataError, "malformed data" unless valid_numbers?(array)
-    raise MalformedDataError, "malformed data" unless valid_type?(type)
+    raise MalformedDataError, "pass valid type" unless valid_type?(type)
+    raise MissingDataError, "array data missing" if array.empty?
+    raise MissingDataError, "type data missing" if type.empty?
+
 
     case type
     when "average"
@@ -29,12 +34,15 @@ class Calculator
   end
 
   def valid_type?(type)
-
     %w[average mode median add].include? type
   end
 
+  def array_format?(numbers)
+    numbers.is_a? Array
+  end
+
   def valid_numbers?(numbers)
-    return false unless numbers.is_a? Array
+    # return false unless numbers.is_a? Array
 
     numbers.all? do |number|
       number.is_a? Numeric
