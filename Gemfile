@@ -13,3 +13,9 @@ gem "sinatra"
 gem "rack-test"
 
 gem "rubocop"
+
+gem "pg"
+
+gem "rake"
+
+gem "sinatra-activerecord"
