@@ -21,3 +21,7 @@ gem "rake"
 gem "sinatra-activerecord"
 
 gem "rack-console"
+
+gem "database_cleaner"
+
+gem "shoulda-matchers"

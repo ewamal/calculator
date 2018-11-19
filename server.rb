@@ -1,8 +1,14 @@
 require "bundler"
 Bundler.require
+
 require "json"
-require_relative "./lib/calculator"
-require_relative "./models/user"
+
+require "./models/user"
+require "./models/calculation"
+require "./lib/calculator"
+
+register Sinatra::ActiveRecordExtension
+set :database_file, 'config/database.yml'
 
 def parse_curl_data
   body = request.body.read.to_s

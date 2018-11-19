@@ -8,5 +8,3 @@ class User < ActiveRecord::Base
   end
 
 end
-
-# TODO: test this
