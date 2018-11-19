@@ -1,0 +1,20 @@
+Thu, 15 Nov 2018 18:09:21 +0100
+./bouncing_ball.rb	Thu, 15 Nov 2018 12:41:47 +0100
+./config/database.yml	Tue, 13 Nov 2018 16:27:25 +0100
+./config.ru	Thu, 08 Nov 2018 17:58:15 +0100
+./spec/spec_helper.rb	Tue, 02 Oct 2018 16:11:14 +0200
+./spec/request_spec.rb	Thu, 08 Nov 2018 18:09:18 +0100
+./spec/lib/calculator_spec.rb	Tue, 13 Nov 2018 11:56:22 +0100
+./spec/lib/user_spec.rb	Tue, 02 Oct 2018 16:11:14 +0200
+./models/user.rb	Tue, 13 Nov 2018 16:45:59 +0100
+./Rakefile	Tue, 13 Nov 2018 16:47:23 +0100
+./public/style.css	Tue, 13 Nov 2018 15:48:11 +0100
+./lib/calculator.rb	Tue, 13 Nov 2018 11:56:19 +0100
+./db/schema.rb	Thu, 15 Nov 2018 17:20:48 +0100
+./db/migrate/20181113155134_create_users.rb	Tue, 13 Nov 2018 17:04:14 +0100
+./db/migrate/20181115155218_update_users.rb	Thu, 15 Nov 2018 17:20:35 +0100
+./Gemfile	Tue, 13 Nov 2018 16:15:49 +0100
+./Gemfile.lock	Tue, 13 Nov 2018 16:16:10 +0100
+./views/layout.erb	Tue, 13 Nov 2018 15:46:41 +0100
+./views/home.erb	Tue, 13 Nov 2018 15:48:15 +0100
+./server.rb	Thu, 15 Nov 2018 12:51:57 +0100
