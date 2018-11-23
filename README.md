@@ -50,7 +50,6 @@ bundle exec rspec
 
 Set up
 ```
-bundle exec rake db:seed
 bundle exec rackup
 ```
 Go to http://localhost:9292/
