@@ -25,3 +25,5 @@ gem "rack-console"
 gem "database_cleaner"
 
 gem "shoulda-matchers"
+
+gem "rack", ">= 2.0.6"
