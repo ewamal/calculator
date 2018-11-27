@@ -30,4 +30,6 @@ gem "rack", ">= 2.0.6"
 
 gem "rollbar"
 
+gem 'dotenv'
+
 # gem 'oj', '~> 2.16.1'  doesnt work

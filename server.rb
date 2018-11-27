@@ -1,6 +1,6 @@
 require "bundler"
 Bundler.require
-
+Dotenv.load
 require "json"
 
 require "./models/user"
@@ -9,12 +9,12 @@ require "./lib/calculator"
 require 'rollbar'
 
 Rollbar.configure do |config|
-  config.access_token = ''
+  config.access_token = ENV["ROLLBAR_TOKEN"]
   config.environment = Sinatra::Base.environment
   config.framework = "Sinatra: #{Sinatra::VERSION}"
 end
 
-Rollbar.error('Hello world')
+Rollbar.error('Hello worlrresd')
 
 register Sinatra::ActiveRecordExtension
 set :database_file, 'config/database.yml'
