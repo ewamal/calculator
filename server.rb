@@ -6,6 +6,15 @@ require "json"
 require "./models/user"
 require "./models/calculation"
 require "./lib/calculator"
+require 'rollbar'
+
+Rollbar.configure do |config|
+  config.access_token = ''
+  config.environment = Sinatra::Base.environment
+  config.framework = "Sinatra: #{Sinatra::VERSION}"
+end
+
+Rollbar.error('Hello world')
 
 register Sinatra::ActiveRecordExtension
 set :database_file, 'config/database.yml'

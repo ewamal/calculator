@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-ruby "2.5.0"
+ruby "2.5.1"
 
 gem "rspec"
 
@@ -27,3 +27,7 @@ gem "database_cleaner"
 gem "shoulda-matchers"
 
 gem "rack", ">= 2.0.6"
+
+gem "rollbar"
+
+# gem 'oj', '~> 2.16.1'  doesnt work
