@@ -11,8 +11,8 @@ class Calculator
     array = data["array"]
 
     raise MissingDataError, "no numbers passed" if array == ""
-    raise MissingDataError, "type data missing" if !type
-    raise MissingDataError, "array data missing" if !array
+    raise MissingDataError, "type data missing" unless type
+    raise MissingDataError, "array data missing" unless array
     raise MalformedDataError, "pass numbers in array" unless array_format?(array)
     raise MalformedDataError, "malformed data" unless valid_numbers?(array)
     raise MalformedDataError, "pass valid type" unless valid_type?(type)

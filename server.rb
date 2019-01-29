@@ -7,6 +7,9 @@ require "./models/user"
 require "./models/calculation"
 require "./lib/calculator"
 require 'rollbar'
+require 'rollbar/middleware/sinatra'
+
+use Rollbar::Middleware::Sinatra
 
 Rollbar.configure do |config|
   config.access_token = ENV["ROLLBAR_TOKEN"]
@@ -22,6 +25,8 @@ set :database_file, 'config/database.yml'
 def parse_curl_data
   body = request.body.read.to_s
   @req_data = JSON.parse(body) if body != ""
+rescue JSON::ParserError
+  @req_data = { "type" => params["type"], "array" => "" }
 end
 
 def parse_form_data
